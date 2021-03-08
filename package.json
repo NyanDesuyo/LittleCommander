@@ -1,0 +1,27 @@
+{
+  "name": "littlecommander",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js --config ",
+    "prod": "node index.js "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0",
+    "jikanjs": "^0.7.0",
+    "lowdb": "^1.0.0",
+    "mongoose": "^5.11.9"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

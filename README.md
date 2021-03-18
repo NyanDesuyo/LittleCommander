@@ -8,17 +8,17 @@ A Simple bot that can interact with
 
 | Command                  | Description                                   |
 | ------------------------ | --------------------------------------------- |
-| allNote                  | Reading all Notes if any note have been saved |
-| addNote [Your note here] | Insert a note and store to database           |
-| deleteNote [id]          | Deleting Note base from note ID               |
-| help                     | Return list of                                |
+| note all                 | Reading all Notes if any note have been saved |
+| note new [CONTENT]       | Insert a note and store to database           |
+| note delete [DocumentID] | Deleting Note base from note ID               |
+| maid clean [NUMBER]      | clearing chat in one server Channel           |
 
 ## For Development Purpose
 
-| Command | Description |
-| ------- | ----------- |
-|         |             |
-|         |             |
+| Command | Description                    |
+| ------- | ------------------------------ |
+| help    | Direct link to This Repository |
+|         |                                |
 
 ## For Future Development
 
@@ -27,7 +27,6 @@ A Simple bot that can interact with
 - [x] Making interaction with database (Simple Create, Read, Update, Delete)
 - [x] Recode the bot interaction (Bot Command)
 - [x] Tiddy up the Code
-- [ ] Implement Jikan API (Anime API)
 
 ## Requierments
 
@@ -37,14 +36,24 @@ A Simple bot that can interact with
 
 ## Instalation
 
-Install dependency for the bot
+Make sure you run this command at same folder.
 
 ```
 npm install
+
+-> for development
+npm run dev
+
+-> for production
+npm run prod
 ```
 
 ## Docker
 
+Make sure you run this command at same folder.
+
 ```
-Currently not available
+docker build username/name:tag .
+
+docker run -d --env-file ./.env <DOCKER CONTAINER ID>
 ```

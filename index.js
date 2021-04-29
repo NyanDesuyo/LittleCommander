@@ -30,8 +30,7 @@ db.defaults({ info: [], history: [] }).write();
 
 //const getLogin = db.get("login");
 //const getLog = db.get("log");
-const saveInfo = require("./database/lowdbInfo");
-const saveHistory = require("./database/lowdbHistory");
+const saveLowDB = require("./database/lowdb");
 
 const commandFiles = fs
   .readdirSync("./commands")
@@ -55,26 +54,23 @@ client.on("ready", () => {
     .catch((err) => {
       console.log(chalk.red(err));
     });
-
-  saveInfo("Ready", "ok!");
+  saveLowDB("info", "Ready", "ok!");
 });
 
 client.on("warn", (warn) => {
   console.log(chalk.yellow("[Warning] :", warn));
-
-  saveInfo("Warning", warn);
+  saveLowDB("info", "Warning", warn);
 });
 
 client.on("error", (err) => {
   console.log(chalk.red("[Error] : ", err));
-
-  saveInfo("Error", err);
+  saveLowDB("info", "Error", err);
 });
 
 client.on("disconnect", () => {
   console.log(chalk.grey("Reconnecting.. "));
 
-  saveInfo("Disconnected", "Reconnecting..");
+  saveLowDB("info", "Disconnected", "Reconnecting..");
   process.exit(0);
 });
 // END
@@ -84,7 +80,7 @@ client.on("message", async (msg) => {
   // Checking text input
   console.log(`[${msg.author.tag}]: ${msg.content}`);
 
-  saveHistory(msg.author.tag, msg.content);
+  saveLowDB("history", msg.author.tag, msg.content);
 
   if (msg.author.bot || !msg.guild) {
     return;

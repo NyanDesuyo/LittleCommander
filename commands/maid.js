@@ -3,12 +3,14 @@ module.exports = {
   description: "Tiddyup discord channel Chat ",
   async execute(msg, args) {
     switch (args[0]) {
+      case "ping":
+        msg.channel.send(`Pong!`);
       case "clean":
         await msg.delete();
         await msg.channel
           .bulkDelete(args[1], true)
           .then((message) => {
-            msg.channel.send(`Bulk deleted ${message.size} message`);
+            msg.channel.send(`Bulk deleted ${message.size + 1} message`);
           })
           .catch((err) => {
             console.log(err);

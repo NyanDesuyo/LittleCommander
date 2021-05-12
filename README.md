@@ -18,7 +18,7 @@ A Simple bot that can interact with
 | Command | Description                    |
 | ------- | ------------------------------ |
 | help    | Direct link to This Repository |
-|         |                                |
+| ping    | test if bot respond or not     |
 
 ## For Future Development
 
@@ -27,11 +27,12 @@ A Simple bot that can interact with
 - [x] Making interaction with database (Simple Create, Read, Update, Delete)
 - [x] Recode the bot interaction (Bot Command)
 - [x] Tiddy up the Code
+- [ ] Adding more Command
 
 ## Requierments
 
-- Node
-- npm
+- NodeJS 15.11.0
+- npm 7.1.2
 - MongoDB
 
 ## Instalation

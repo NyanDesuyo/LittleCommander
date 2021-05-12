@@ -47,7 +47,7 @@ client.on("ready", () => {
   console.log(chalk.white(`Logged in as ${client.user.tag}!`));
 
   client.user
-    .setActivity("'!' for commands ", { type: "PLAYING" })
+    .setActivity("'!' for commands ", { type: "WATCHING" })
     .then((presence) =>
       console.log(chalk.white(`Activity set "${presence.activities[0].name}"`)),
     )

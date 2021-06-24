@@ -13,20 +13,9 @@ client.commands = new Discord.Collection();
 const fs = require("fs");
 const chalk = require("chalk");
 
-// Database
-const connectionDB = require("./config/connect");
-
-const low = require("lowdb");
-const FileSync = require("lowdb/adapters/FileSync");
-
-const adapter = new FileSync("db.json");
-const db = low(adapter);
-
 // Database Connection
+const connectionDB = require("./config/connect");
 connectionDB();
-
-// lowDB default Value
-db.defaults({ info: [], history: [] }).write();
 
 //const getLogin = db.get("login");
 //const getLog = db.get("log");
@@ -40,6 +29,9 @@ for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
   client.commands.set(command.name, command);
 }
+
+// clear terminal when restart
+console.clear();
 
 // Discord Lifecycle
 // START

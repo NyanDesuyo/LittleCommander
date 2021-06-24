@@ -14,7 +14,7 @@ const fs = require("fs");
 const chalk = require("chalk");
 
 // Database
-const connectionDB = require("./database/connect");
+const connectionDB = require("./config/connect");
 
 const low = require("lowdb");
 const FileSync = require("lowdb/adapters/FileSync");
@@ -30,7 +30,7 @@ db.defaults({ info: [], history: [] }).write();
 
 //const getLogin = db.get("login");
 //const getLog = db.get("log");
-const saveLowDB = require("./database/lowdb");
+const saveLowDB = require("./config/lowdb");
 
 const commandFiles = fs
   .readdirSync("./commands")

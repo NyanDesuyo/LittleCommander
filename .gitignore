@@ -116,4 +116,4 @@ dist
 .pnp.*
 
 # custom file
-db.json
+database/*.json

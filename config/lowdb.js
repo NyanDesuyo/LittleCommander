@@ -14,25 +14,3 @@ module.exports = (get, author, message) => {
     })
     .write();
 };
-
-module.exports = (author, message) => {
-  database
-    .get("history")
-    .push({
-      author: author,
-      message: message,
-      datetime: Date(),
-    })
-    .write();
-};
-
-module.exports = (status, message) => {
-  database
-    .get("info")
-    .push({
-      status: status,
-      message: message,
-      datetime: Date(),
-    })
-    .write();
-};

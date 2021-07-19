@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const chalk = require("chalk");
+const process = require("process");
 
 dotenv.config();
 

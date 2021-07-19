@@ -5,6 +5,12 @@ module.exports = {
     switch (args[0]) {
       case "ping":
         msg.channel.send(`Pong!`);
+        break;
+
+      case "status":
+        msg.channel.send("return server status");
+        break;
+
       case "clean":
         await msg.delete();
         await msg.channel

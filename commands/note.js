@@ -6,7 +6,7 @@ module.exports = {
   description: "save load Note",
   async execute(msg, args) {
     switch (args[0]) {
-      case "all":
+      case "all": {
         try {
           const notes = await Note.find();
           const count = await Note.countDocuments();
@@ -39,7 +39,9 @@ module.exports = {
           await msg.channel.send(error);
         }
         break;
-      case "new":
+      }
+
+      case "new": {
         const note = new Note({
           user_tag: msg.author.tag,
           user_message: args.join(" "),
@@ -60,8 +62,11 @@ module.exports = {
           await msg.channel.send(error);
         }
         break;
-      case "delete":
+      }
+
+      case "delete": {
         try {
+          // eslint-disable-next-line no-unused-vars
           const note = await Note.findByIdAndDelete(args[1]);
           const done = new MessageEmbed()
             .setTitle("Result")
@@ -76,6 +81,8 @@ module.exports = {
           await msg.channel.send(error);
         }
         break;
+      }
+
       default:
         break;
     }

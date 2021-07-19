@@ -1,8 +1,5 @@
 # LittleCommander
 
-## Note
-
-This Project is Deprecated change to Typecript
 ## About
 
 A Simple bot that can interact with

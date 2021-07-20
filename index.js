@@ -16,9 +16,8 @@ const chalk = require("chalk");
 
 // Database Connection
 const connectionDB = require("./config/connect");
-connectionDB();
 
-const saveLowDB = require("./config/lowdb");
+const LowDB = require("./config/lowdb");
 
 async function main() {
   const commandFiles = fs
@@ -32,11 +31,11 @@ async function main() {
 
   // clear terminal when restart
   console.clear();
-  saveLowDB("info", "Test", "test if this write or not");
 
   // Discord Lifecycle
   // START
   client.on("ready", () => {
+    console.log(chalk.bgBlueBright.black("🤖 Discord Bot"));
     console.log(chalk.white(`Logged in as ${client.user.tag}!`));
 
     client.user
@@ -49,23 +48,25 @@ async function main() {
       .catch((err) => {
         console.log(chalk.red(err));
       });
-    saveLowDB("info", "Ready", "ok!");
+    // Main Database
+    connectionDB();
+    LowDB("info", "Ready", "ok!");
   });
 
   client.on("warn", (warn) => {
     console.log(chalk.yellow("[Warning] :", warn));
-    saveLowDB("info", "Warning", warn);
+    LowDB("info", "Warning", warn);
   });
 
   client.on("error", (err) => {
     console.log(chalk.red("[Error] : ", err));
-    saveLowDB("info", "Error", err);
+    LowDB("info", "Error", err);
   });
 
   client.on("disconnect", () => {
     console.log(chalk.grey("Reconnecting.. "));
 
-    saveLowDB("info", "Disconnected", "Reconnecting..");
+    LowDB("info", "Disconnected", "Reconnecting..");
     process.exit(0);
   });
   // END
@@ -75,7 +76,7 @@ async function main() {
     // Checking text input
     console.log(`[${msg.author.tag}]: ${msg.content}`);
 
-    saveLowDB("history", msg.author.tag, msg.content);
+    LowDB("history", msg.author.tag, msg.content);
 
     if (msg.author.bot || !msg.guild) {
       return;
@@ -88,13 +89,19 @@ async function main() {
         .split(/\s+/);
 
       // Debugging section
-      console.log(chalk.green(`Command: ${CMD_NAME}`));
-      console.log(chalk.red(`Argument: ${args}`));
+      console.log(
+        chalk.bgGreenBright.black(`Command  :`) + " " + chalk.green(CMD_NAME),
+      );
+      console.log(
+        chalk.bgYellowBright.black(`Argument :`) +
+          " " +
+          chalk.yellowBright(args),
+      );
 
       try {
         await client.commands.get(CMD_NAME).execute(msg, args);
       } catch (err) {
-        console.log(chalk.bgRed(err));
+        console.log(chalk.bgRed.black("Error    :") + " " + chalk.red(err));
         await msg.channel.send("Type '!help' for available command");
       }
     }

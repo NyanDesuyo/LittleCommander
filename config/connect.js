@@ -14,6 +14,6 @@ module.exports = () => {
       // TEMP
       useFindAndModify: false,
     },
-    () => console.log(chalk.blue("Connected to DB!")),
+    () => console.log(chalk.bgGreenBright.black("🍃 Connected to MongoDB!")),
   );
 };
